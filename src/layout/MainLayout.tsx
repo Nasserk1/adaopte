@@ -4,7 +4,12 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <Header />
-      <main style={{ padding: "2rem", maxWidth: "1100px", margin: "0 auto" }}>
+      <main style={{ 
+        padding: "2rem", 
+        maxWidth: "1100px", 
+        margin: "0 auto", 
+        background: "#fbfbeaff" 
+        }}>
       {children}
         </main>
     </>
