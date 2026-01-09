@@ -6,12 +6,14 @@ import "./Home.css";
 export default function Home() {
     return (
         <main>
-            <section className="hero">
+            <section className="hero" aria-label="Présentation de la plateforme d'adoption">
+                <div className="hero-content">
             <h1>🐾🐾Bienvenue sur Adaopte🐾🐾</h1>
             <p>Donnons-leur autant qu'ils nous apportent.
                 Chaque jour, des milliers d'animaux attendent une famille aimante.
                 Trouvez votre compagnon idéal parmi nos animaux disponibles à l'adoption.
             </p>
+            </div>
         </section>
 
             <section>
@@ -19,11 +21,17 @@ export default function Home() {
                 {/* ici viendra la liste des animaux */}
                 <p>Découvrez les animaux disponibles pour l'adoption.
                      Chaque photo raconte une histoire et un espoir.
-                        <div className="animal-preview">
-                     <div className="card">🐶chien</div>
-                        <div className="card">🐱chat</div>
-                        </div>
-                </p>
+                     </p>
+              <div className="animal-preview">
+                     <Link to="/jadopte?type=chien" className="card" aria-label="voir les chiens à adopter">
+                             🐶 <strong>Chien</strong>
+                    </Link>
+
+                     <Link to="/jadopte?type=chat" className="card" aria-label="voir les chats à adopter">
+                             🐱 <strong>Chat</strong>
+                    </Link>
+              </div>
+                
             </section>
 
             {/* Processus d'adoption */}
@@ -55,9 +63,13 @@ export default function Home() {
                    
                         <p>Notre mission est de trouver des foyers aimants pour chaque animal abandonné et de promouvoir le bien-être animal.</p>
 
-                        <Link to="/jadopte" className="cta-button">
-                         Adopter un animal
-                         </Link>
+                <Link
+                     to="/jadopte"
+                     className="cta-button"
+                     aria-label="Accéder à la page d’adoption"
+                  >
+                    Adopter un animal
+                </Link>
 
                     </section>
 
