@@ -55,7 +55,7 @@ export default function Home() {
                    
                         <p>Notre mission est de trouver des foyers aimants pour chaque animal abandonné et de promouvoir le bien-être animal.</p>
 
-                        <Link to="/jadopte" className="cta-button">
+                        <Link to="/Jadopte" className="cta-button">
                          Adopter un animal
                          </Link>
 
