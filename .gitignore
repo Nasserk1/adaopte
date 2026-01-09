@@ -22,6 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
 
 # pages
 test/
+=======
+.env.local
+>>>>>>> a851cc6921664e68950c524924e2ebcd2dec15c5

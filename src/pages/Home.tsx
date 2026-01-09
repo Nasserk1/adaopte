@@ -1,8 +1,14 @@
 export default function Home() {
     return (
         <main>
-            <h2>Bienvenue sur Adaopte 🐾</h2>
+            <h1>🐾🐾Bienvenue sur Adaopte🐾🐾</h1>
             <p>Plateforme d'adoption d'animaux.</p>
-            </main>
+        
+
+            <section>
+                <h2>Nos animaux</h2>
+                <p>Découvrez les animaux disponibles pour l'adoption.</p>
+            </section>
+        </main>
     );
 }
