@@ -1,10 +1,13 @@
-
+import { ImFacebook2 } from "react-icons/im";
+import { BsTwitterX } from "react-icons/bs";
+import { FiTwitch } from "react-icons/fi";
 
 export default function Footer() {
     return (
         <footer>
             <h3>ADAOPTE</h3>
                 <p>Notre mission est de trouver un foyer aimant pour chaque animal abandonné et de promouvoir le bien être animal.</p>
+                <ImFacebook2 /> <BsTwitterX /> <FiTwitch />
             <h3>INFORMATIONS UTILES</h3>
                 <p>FAQs</p>
                 <p>Conseils d'adoption</p>
