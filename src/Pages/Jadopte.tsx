@@ -1,12 +1,10 @@
-import LocalisationFilter from '../components/LocalisationFilter';
-import TypesFilter from '../components/TypesFilter';
+import SearchBar from '../components/SearchBar';
 
 export default function Jadopte () {
     return (
         <>
         <p>FILTER</p>
-        <TypesFilter />
-        <LocalisationFilter />
+        <SearchBar />
         </>
     )
 } 

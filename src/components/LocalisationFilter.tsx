@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { sql } from "../lib/sql.tsx";
-import { useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
-export default function LocalisationFilter() {
-  const [city, setCity] = useState("");
+
+interface cityProps {
+  city: string,
+  setCity: Dispatch<SetStateAction<string>>
+}
+export default function LocalisationFilter({city, setCity}: cityProps) {
   const {
     data: response,
     isLoading,
