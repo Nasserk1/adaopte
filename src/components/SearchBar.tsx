@@ -4,9 +4,10 @@ import { useState } from "react";
 
 export default function SearchBar(){
 const [city, setCity]= useState('')
+const [value, setValue] = useState('');
 return (
     <>
-<TypesFilter />
+<TypesFilter value={value} setValue={setValue} />
 <LocalisationFilter city={city} setCity={setCity} />
 
 </>
