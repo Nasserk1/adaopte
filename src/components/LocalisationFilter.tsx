@@ -8,11 +8,7 @@ interface cityProps {
   setCity: Dispatch<SetStateAction<string>>
 }
 export default function LocalisationFilter({city, setCity}: cityProps) {
-  const {
-    data: response,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: response, isLoading, error} = useQuery({
     queryKey: ["shelters"],
     queryFn: async () => {
       const result = await sql("SELECT city FROM shelters");
@@ -31,8 +27,8 @@ export default function LocalisationFilter({city, setCity}: cityProps) {
       cityArray.push(city.city);
     }
     console.log(cityArray);
-    const found = cityArray.find(cityFound=> cityFound===text);
-    return found?? 'Aucun résultat';
+    const found = cityArray.find(cityFound => cityFound === text);
+    return found ?? 'Aucun résultat';
   }
 
   return (
@@ -41,10 +37,10 @@ export default function LocalisationFilter({city, setCity}: cityProps) {
         <p>Localisation</p>
       </div>
       <input
-        type="text" name="localisation"
+        value= {city} type="text" name="localisation"
         onChange={(e) => setCity(e.target.value)}
         placeholder="Votre ville"></input>
-      <p>{isCity(city)}</p>
+      {isCity(city)}
     </ul>
   );
 }

@@ -17,14 +17,19 @@ if (value){
     params.set('type', value);
 };
 if (city){
-params.set('city', city);
+    params.set('city', city);
 }
+
 
 const url = '/Jadopte?' + params.toString();
 
-console.log(url);
-
 navigate(url);
+}
+
+function reset(){
+    navigate('/Jadopte');
+    setValue('Tous');
+    setCity('');
 }
 
 return (
@@ -34,6 +39,7 @@ return (
 <LocalisationFilter city={city} setCity={setCity} />
 <button type= 'submit'>Rechercher 🔎</button>
     </form>
+<button type= 'submit' onClick={() => reset()}>Réinitialiser les filtres</button>
 </>
 )
 }
