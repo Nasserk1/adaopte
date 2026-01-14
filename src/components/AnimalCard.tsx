@@ -1,27 +1,43 @@
 import "./AnimalCardCss.css";
+interface AnimalCardProps {
+  type: string,
+  name: string,
+  breed: string,
+  age: string | number,
+  localisation: string,
+  description: string,
+  imageUrl: string,
+}
 
-
-export default function AnimalCard() {
+export default function AnimalCard({
+  type, 
+  name, 
+  breed, 
+  age, 
+  localisation, 
+  description, 
+  imageUrl
+}: AnimalCardProps) {
   return (
     <div className="animal-card">
       <img
-        src="imageUrl"
+        src={imageUrl}
         alt="Animal"
         className="animal-image"
       />
 
       <div className="animal-content">
-        <p className="animal-type">{'{type}'}</p>
+        <p className="animal-type">{type}</p>
 
-        <h2 className="animal-name">{'{name}'}</h2>
+        <h2 className="animal-name">{name}</h2>
 
         <p className="animal-details">
-          {'{breed}'} · {'{age}'}
+          {breed} · {age}
         </p>
 
-        <p className="animal-location">{'{localisation}'}</p>
+        <p className="animal-location">{localisation}</p>
 
-        <p className="animal-description">{'{description}'}</p>
+        <p className="animal-description">{description}</p>
 
         <button className="animal-button">
           Rencontrer
