@@ -63,4 +63,10 @@
   font-size: 12px;
   background-color: rgb(44, 42, 42);
   border-radius: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.animal-button:hover {
+        background-color: #245aab; 
+        transform: scale(1.05);  
 }
