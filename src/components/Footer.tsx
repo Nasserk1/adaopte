@@ -1,10 +1,12 @@
 import { ImFacebook2 } from "react-icons/im";
 import { BsTwitterX } from "react-icons/bs";
 import { FiTwitch } from "react-icons/fi";
+import "./components/Footer1.css";
+
 
 export default function Footer() {
     return (
-        <footer>
+        <footer className="footerCard">
             <h3>ADAOPTE</h3>
                 <p>Notre mission est de trouver un foyer aimant pour chaque animal abandonné et de promouvoir le bien être animal.</p>
                 <ImFacebook2 /> <BsTwitterX /> <FiTwitch />
