@@ -32,20 +32,16 @@ export default function Jadopte () {
             JOIN shelters ON animals.shelter_id = shelters.id 
             JOIN types ON b.type_id = types.id
             `;
-        // const temp2 = await sql(`SELECT animals.*, b.name as breed, shelters.city as shelter, types.name as type FROM animals JOIN breeds as b ON animals.breed_id = b.id JOIN shelters ON animals.shelter_id = shelters.id JOIN types ON b.type_id = types.id`);
+            
             if (type!=='Tous' && city){
                 temp = await sql(reqSql + `WHERE types.name = ? AND shelters.city = ?`, [type, city]);
-                console.log('if')
             } 
             else if (type!=='Tous' && type){
                 temp = await sql(reqSql + `WHERE types.name = ?`, [type]);
-                console.log('else if type')
             } else if (city!=='' && city){
                 temp = await sql(reqSql + `WHERE shelters.city = ?`, [city]);
-                console.log('else if city')
             } else {
                 temp = await sql(reqSql);
-                console.log('else')
             }
             const result = temp;
 
