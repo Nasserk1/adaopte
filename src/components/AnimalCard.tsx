@@ -32,7 +32,7 @@ export default function AnimalCard({
         <h2 className="animal-name">{name}</h2>
 
         <p className="animal-details">
-          {breed} · {age}
+          {breed} · {age} ans
         </p>
 
         <p className="animal-location">{localisation}</p>
