@@ -1,5 +1,6 @@
 import SearchBar from '../components/SearchBar';
 import { useSearchParams } from 'react-router-dom';
+import Container from '../components/ContainerAnimalsCards';
 // import { useState } from 'react';
 import { sql } from "../lib/sql";
 import { useQuery } from "@tanstack/react-query";
@@ -67,6 +68,7 @@ export default function Jadopte () {
     return (
         <>
         <SearchBar />
+        <Container />
         {response.map((el : type) => (<div key={el.name} style={{borderStyle: 'solid'}}>
             <p id='type'>{el.type}</p>
             <p id='name'>{el.name}</p>

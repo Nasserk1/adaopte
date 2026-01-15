@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import Home from "./pages/Home";
+import Home from "./Pages/Home";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import NotFound from "./pages/NotFound";
+import NotFound from "./Pages/NotFound";
 import Layout from "./components/Layout";
-import Jadopte from './pages/Jadopte';
+import Jadopte from './Pages/Jadopte';
 
 const router = createBrowserRouter([
     {
