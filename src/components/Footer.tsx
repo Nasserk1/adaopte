@@ -7,7 +7,7 @@ import { TbBrandTwitch } from "react-icons/tb";
 
 export default function Footer() {
     return (
-        <footer>
+        <footer className="footerSection">
             <h3>ADAOPTE</h3>
             <p>Notre mission est de trouver des foyers aimants pour des animaux abandonnés et de promouvoir le bien-être animal.</p>
             <FaFacebookSquare />
