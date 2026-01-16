@@ -8,14 +8,13 @@ interface cityProps {
 export default function LocalisationFilter({city, setCity}: cityProps) {
 
   return (
-    <ul>
-      <div className="localisation">
-        <p>Localisation</p>
-      </div>
+
+    <div id='localisation'>
+      <label htmlFor="localisation">Localisation</label>
       <input
         value= {city} type="text" name="localisation"
         onChange={(e) => setCity(e.target.value)}
         placeholder="Votre ville"></input>
-    </ul>
+    </div>
   );
 }

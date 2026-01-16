@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import Home from "./Pages/Home";
+import Home from "./pages/Home";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import NotFound from "./Pages/NotFound";
+import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import Jadopte from './Pages/Jadopte';
 import "./index.css";

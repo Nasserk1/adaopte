@@ -2,6 +2,7 @@ import LocalisationFilter from "./LocalisationFilter";
 import TypesFilter from "./TypesFilter";
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import './SearchBar.css'
 
 export default function SearchBar(){
 const [city, setCity]= useState('')
@@ -32,15 +33,18 @@ function reset(){
 }
 
 return (
-    <>
-    <form onSubmit={handleSubmit}>
-<TypesFilter value={value} setValue={setValue} />
-<LocalisationFilter city={city} setCity={setCity} />
-<button type= 'submit'>Rechercher 🔎</button>
-    </form>
-<button type= 'submit' onClick={() => reset()}>Réinitialiser les filtres</button>
-</>
-)
+    <div className="searchbar-wrapper">
+      <form onSubmit={handleSubmit}>
+        <TypesFilter value={value} setValue={setValue} />
+        <LocalisationFilter city={city} setCity={setCity} />
+        <button className="searchButton" type='submit'>Rechercher 🔎</button>
+      </form>
+      
+      <button className="initButton" type='button' onClick={reset}>
+        Réinitialiser les filtres
+      </button>
+    </div>
+  )
 }
 
 // /jadopte?type=chien&localisation=Lyon
