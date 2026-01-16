@@ -16,8 +16,8 @@ export default function Home() {
                 Trouvez votre compagnon idéal parmi nos animaux disponibles à l'adoption.
             </p>
             </div>
-            <SearchBar />
         </section>
+        <SearchBar />
 
             <section>
                 <h2>Nos animaux à adopter</h2>
