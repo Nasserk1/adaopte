@@ -35,16 +35,15 @@ export default function TypesFilter({value, setValue} : typeProps) {
 
 
   return (
-    <ul>
-      <div className="type">
-        <p>Type d'animal</p>
-      </div>
-      <select name="animalTypes" id="animalTypes" onChange={(e) => setValue(e.target.value)}>
-        {value === "Tous" ? <option value="Tous" selected>Tous</option> : <option value="Tous">Tous</option>}
+        <div className="animalType">
+  <label htmlFor="animalTypes">Type d'animal</label>
+  
+      <select id="animalTypes" name="animalTypes" onChange={(e) => setValue(e.target.value)}>
+        {value === "Tous les animaux" ? <option value="Tous" selected>Tous les animaux</option> : <option value="Tous">Tous les animaux</option>}
         {response?.data.map((element: type) => (
           <option key={element.id} value={element.name}>{element.name}</option>
         ))}
       </select>
-    </ul>
+      </div>
   );
 }
