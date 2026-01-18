@@ -1,54 +1,84 @@
 .hero {
-    padding: 3rem;
-    background: #fdf6e3;
-    border-radius: 12px;
-    text-align: center;
+  padding: 3rem;
+  background: #fdf6e3;
+  border-radius: 12px;
+  text-align: center;
 }
 
 .hero h1 {
-    font-size: 2.2rem;
+  font-size: 2.2rem;
 }
 
 .hero p {
-    max-width: 700px;
-    margin: 1rem auto 0;
+  max-width: 700px;
+  margin: 1rem auto 0;
 }
 
 .animal-preview {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.car{
-    padding: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    background: #f9f9f9;
-    width: 120px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+.card {
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  width: 120px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .cta-button {
-    display: inline-block;
-    margin-top:2rem;
-    padding: 14px 28px;
-    border-radius: 8px;
-    background: #333;
-    cursor: pointer;
-    color: #fff;
-    text-decoration: none;
-   transition: transform 0.2s ease, background 0.2s ease;
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 14px 28px;
+  border-radius: 8px;
+  background: #333;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 }
-     
-.cta-button:hover {
-    background:#7a78ff;
-    transform: scale(1.05);
-}    
 
+.cta-button:hover {
+  background: #7a78ff;
+  transform: scale(1.05);
+}
+
+.animals-section {
+  max-width: 1000px;
+  margin: 4rem auto;
+  text-align: center;
+}
+
+.animals-grid {
+  column-count: 4;
+  column-gap: 20px;
+}
+
+.animal-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.animal-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .animals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
