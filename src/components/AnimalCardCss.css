@@ -59,4 +59,11 @@
 
 /* Bouton */
 .animal-button {
-  background-color: #3
+  background-color: black;
+  border-radius: 20px;
+  margin-right: 25px;
+  padding: 12px;
+  gap: 5px;
+  color: white;
+  font-size: 10px;
+}
