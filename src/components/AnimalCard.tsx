@@ -32,14 +32,14 @@ export default function AnimalCard({
         <h2 className="animal-name">{name}</h2>
 
         <p className="animal-details">
-          {breed} · {age}
+          {breed} · {age} ans
         </p>
 
         <p className="animal-location">{localisation}</p>
 
         <p className="animal-description">{description}</p>
 
-        <button className="animal-button">
+        <button className="animal-button" onClick={() => alert(name +' ' + type)}>
           Rencontrer
         </button>
       </div>

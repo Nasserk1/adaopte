@@ -1,0 +1,167 @@
+.searchbar-wrapper {
+  max-width: 1000px;
+  margin: 0 auto 32px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+form {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Localisation */
+.animalType,
+#localisation {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1 1 0;
+}
+
+
+.type p,
+#localisation label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Input pour la localisation */
+#localisation input {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #1a1a1a;
+  transition: border-color 0.2s ease;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+#localisation input::placeholder {
+  color: #9ca3af;
+}
+
+#localisation input:hover {
+  border-color: #9ca3af;
+}
+
+#localisation input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Select pour le type d'animal */
+#animalTypes {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: white;
+  color: #1a1a1a;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%231a1a1a' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  transition: border-color 0.2s ease;
+  width: 70%;
+  box-sizing: border-box;
+}
+
+#animalTypes:hover {
+  border-color: #9ca3af;
+}
+
+#animalTypes:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.animalType label {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Bouton de recherche */
+.searchButton {
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background-color: #2d3748;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  height: fit-content;
+  flex-shrink: 0;
+}
+
+.searchButton:hover {
+  background-color: #1a202c;
+}
+
+.searchButton:active {
+  transform: scale(0.98);
+}
+
+/* Bouton réinitialiser */
+.initButton {
+  background: none;
+  border: none;
+  color: #059669;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  transition: color 0.2s ease;
+  display: block;
+  align-self: flex-end;
+}
+
+.initButton:hover {
+  color: #047857;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .searchbar-wrapper {
+    align-items: stretch;
+  }
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+
+  .searchButton {
+    width: 100%;
+  }
+
+  .initButton {
+    align-self: flex-start;
+  }
+}

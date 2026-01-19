@@ -1,0 +1,12 @@
+.container {
+    background-color: #f9f9f9;
+    width: 100%;
+    border: 5cap;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+    gap: 15px;
+    padding: 80px 40px 80px 40px;
+    box-sizing: border-box;
+}

@@ -1,80 +1,116 @@
 import { Link } from "react-router-dom";
+import { animals } from "../data/animals";
+import SearchBar from "../components/SearchBar";
+import "../components/SearchBar.css";
 import "./Home.css";
 
 
-
 export default function Home() {
-    return (
-        <main>
-            <section className="hero" aria-label="Présentation de la plateforme d'adoption">
-                <div className="hero-content">
-            <h1>🐾🐾Bienvenue sur Adaopte🐾🐾</h1>
-            <p>Donnons-leur autant qu'ils nous apportent.
-                Chaque jour, des milliers d'animaux attendent une famille aimante.
-                Trouvez votre compagnon idéal parmi nos animaux disponibles à l'adoption.
-            </p>
+  return (
+    <main>
+      <section
+        className="hero"
+        aria-label="Présentation de la plateforme d'adoption"
+      >
+        <div className="hero-content">
+          <h1>Donnons-leur autant qu'ils nous apportent</h1>
+
+          <p>
+            Chaque jour, des milliers d'animaux attendent une famille aimante.
+            Trouvez votre compagnon idéal parmi nos animaux disponibles à
+            l'adoption.
+          </p>
+        </div>
+      </section>
+      <SearchBar />
+      <section className="animals-section">
+        <h2>Nos animaux à adopter</h2>
+        <p>
+          Découvrez en images tous nos animaux qui attendent une famille
+          aimante. Chaque photo raconte une histoire et un espoir.
+        </p>
+
+        {/* Grid des animaux */}
+        <div className="animals-grid">
+          {[
+            animals[2], // Col1 grande
+            animals[1], // Col2 piccola
+            animals[3], // Col3 grande
+            animals[5], // Col4 piccola
+            animals[4], // Col1 piccola
+            animals[0], // Col2 grande
+            animals[7], // Col3 piccola
+            animals[6], // Col4 grande
+          ].map((animal, index) => (
+            <div
+              key={animal.id}
+              className={
+                index === 0 || index === 2 || index === 5 || index === 7
+                  ? "animal-item animal-item--tall"
+                  : "animal-item"
+              }
+            >
+              <img src={animal.image} alt={animal.type} />
             </div>
-        </section>
+          ))}
+        </div>
+        {/*button */}
+        <Link to="/jadopte" className="see-all">
+          Voir tous les animaux
+        </Link>
+      </section>
+      {/* Processus d'adoption */}
+      <section className="how-it-works">
+        <h2>Comment ça marche</h2>
+        <p className="subtitle">
+          Adopter un animal est un engagement sérieux et à long terme.
+        </p>
 
-            <section>
-                <h2>Nos animaux à adopter</h2>
-                {/* ici viendra la liste des animaux */}
-                <p>Découvrez les animaux disponibles pour l'adoption.
-                     Chaque photo raconte une histoire et un espoir.
-                     </p>
-              <div className="animal-preview">
-                     <Link to="/jadopte?type=chien" className="card" aria-label="voir les chiens à adopter">
-                             🐶 <strong>Chien</strong>
-                    </Link>
+        <div className="steps">
+          <div className="step-card">
+            <span className="icon">🔍</span>
+            <h3>1.Trouvez votre compagnon</h3>
+            <p>Parcourez notre base de données et utilisez les filtres.</p>
+          </div>
 
-                     <Link to="/jadopte?type=chat" className="card" aria-label="voir les chats à adopter">
-                             🐱 <strong>Chat</strong>
-                    </Link>
-              </div>
-                
-            </section>
+          <div className="step-card">
+            <span className="icon">📝</span>
+            <h3>2.Remplissez une demande</h3>
+            <p>Soumettez votre formulaire d’adoption.</p>
+          </div>
 
-            {/* Processus d'adoption */}
-            <section>
-                <h2>Comme ça marche</h2>
-                <p>Adopter un animal est un engagement sérieux et à long terme. Voici notre processus d'adoption en quelques étapes simples.</p>
-                    <ol>
-                        <li>Trouvez votre compagnon</li>
-                        <p>Parcourez notre base de données d'animaux disponibles et utilisez nos filtres pour trouver celui qui correspond à votre mode de vie.</p>
-                        
-                        <li>Remplissez une demande d'adoption</li>
-                        <p>Soumettez votre formulaire d'adoption pour l'animal qui vous intéresse. Nous examinons chaque demande avec soin.</p>
-                        
-                        <li>Rencontrez l'animal</li>
-                        <p>Visitez le refuge pour rencontrer l'animal et voir si vous êtes compatibles. C'est une étape essentielle du processus.</p>
-                        <li>Bienvenue à la maison</li>
-                        <p>Une fois votre demande approuvée, vous pouvez accueillir votre nouvel ami chez vous. Nous restons disponibles pour vous conseiller.
-                </p>
-                   </ol>
-          </section>
-                    
-                      
+          <div className="step-card">
+            <span className="icon">🤝</span>
+            <h3>3. Rencontrez l’animal</h3>
+            <p>Visitez le refuge pour vérifier la compatibilité.</p>
+          </div>
 
-                    {/*Call To Action*/}
-                    <section>
-                        <h2>Prêt(e) à chancher une vie ?</h2>
-                        <p>Adoptez, partagez, soutenez... Chaque geste compte. Que vous ouvriez votre foyer ou votre coeur, vous pouvez offrir une seconde chance à un animal abandonné.</p>
-                    
-                   
-                        <p>Notre mission est de trouver des foyers aimants pour chaque animal abandonné et de promouvoir le bien-être animal.</p>
+          <div className="step-card">
+            <span className="icon">🏠</span>
+            <h3>4. Bienvenue à la maison</h3>
+            <p>Accueillez votre nouvel ami chez vous.</p>
+          </div>
+        </div>
+      </section>{" "}
+      {/* fine how-it-works */}
+      <section className="call-to-action">
+        <h2>Prêt·e à changer une vie ?</h2>
+        <p>Adoptez, partagez, soutenez. Chaque geste compte.</p>
 
-                <Link
-                     to="/jadopte"
-                     className="cta-button"
-                     aria-label="Accéder à la page d’adoption"
-                  >
-                    Adopter un animal
-                </Link>
+        <div className="cta-buttons">
+          <Link to="/jadopte" className="btn primary">
+            Adopter un animal
+          </Link>
 
-                    </section>
+          <Link to="/don" className="btn danger">
+            Faire un don
+          </Link>
 
-              
-            
-        </main>
-    );
+          <Link to="/benevole" className="btn success">
+            Devenir bénévole
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
 }

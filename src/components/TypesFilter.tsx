@@ -33,17 +33,17 @@ export default function TypesFilter({value, setValue} : typeProps) {
   if (isLoading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error.message}</p>;
 
+
   return (
-    <ul>
-      <div className="type">
-        <p>Type d'animal</p>
-      </div>
-      <p>{value}</p>
-      <select name="animaux" id="animaux" onChange={(e) => setValue(e.target.value)}>
+        <div className="animalType">
+  <label htmlFor="animalTypes">Type d'animal</label>
+  
+      <select id="animalTypes" name="animalTypes" onChange={(e) => setValue(e.target.value)}>
+        {value === "Tous les animaux" ? <option value="Tous" selected>Tous les animaux</option> : <option value="Tous">Tous les animaux</option>}
         {response?.data.map((element: type) => (
-          <option key={element.id}>{element.name}</option>
+          <option key={element.id} value={element.name}>{element.name}</option>
         ))}
       </select>
-    </ul>
+      </div>
   );
 }
