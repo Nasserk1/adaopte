@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar";
 import "../components/SearchBar.css";
 import "./Home.css";
 
+
 export default function Home() {
   return (
     <main>
