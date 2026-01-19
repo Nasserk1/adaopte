@@ -110,13 +110,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <Link
-        to="/jadopte"
-        className="cta-button"
-        aria-label="Accéder à la page d’adoption"
-      >
-        Adopter un animal
-      </Link>
     </main>
   );
 }
