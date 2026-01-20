@@ -67,8 +67,12 @@
   color: white;
   font-size: 13px;
   font-family: Roboto;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .animal-button:hover {
-        transform: scale(1.05);  
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
