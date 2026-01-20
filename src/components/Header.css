@@ -1,61 +1,69 @@
-#root{
-    --logo-color-theme : #ff6d39;
-    --don-color-theme : #e74b3c;
-    --bg-color: #fffaf7;
+#root {
+  --logo-color-theme: #ff6d39;
+  --don-color-theme: #e74b3c;
+  --bg-color: #fffaf7;
 }
 
 #header-container {
-    background-color: var(--bg-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    font-family: Roboto;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  font-family: Roboto;
 }
 
-#adaopte-logo{
-    font-size: 1.3rem;
+#adaopte-logo {
+  font-size: 1.3rem;
 }
 
 #adaopte-style {
-    text-decoration: none;
-    text-transform: capitalize;
-    font-weight: 600;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 600;
 }
 
 #ada-style {
-    color: black;
+  color: black;
 }
 
 #opte-style {
-    color: var(--logo-color-theme);
+  color: var(--logo-color-theme);
 }
 
 #header-nav {
-    display: flex;
-    gap: 15px;
-    font-size: 0.9rem;
-    font-weight: 700;
+  display: flex;
+  gap: 15px;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .icon-container {
-    text-decoration: none;
-    color: black;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 #faire-un-don-button {
-    color: white;
-    background-color: var(--don-color-theme);
-    width: fit-content;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    cursor: pointer;
+  color: white;
+  background-color: var(--don-color-theme);
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+#faire-un-don-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
 #handheart-icon {
-    font-size: 13px;
+  font-size: 13px;
 }

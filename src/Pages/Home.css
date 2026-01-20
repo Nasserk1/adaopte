@@ -30,7 +30,7 @@
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 
-h2 {
+.grid-titles {
   margin-bottom: 50px;
   font-family: Amatic;
   font-size: 3rem;

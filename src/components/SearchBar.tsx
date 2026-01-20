@@ -18,11 +18,8 @@ if (value){
 };
 if (city){
     params.set('city', city);
-}
-
-
+};
 const url = '/Jadopte?' + params.toString();
-
 navigate(url);
 }
 
