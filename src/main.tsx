@@ -1,15 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter } from "react-router";
-import { RouterProvider } from "react-router/dom";
-import Home from "./pages/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./Pages/Home";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import NotFound from "./pages/NotFound";
+import NotFound from "./Pages/NotFound";
 import Layout from "./components/Layout";
-import Jadopte from "./pages/Jadopte";
+import Jadopte from "./Pages/Jadopte";
+import Benevole from "./Pages/Benevole";
 import "./index.css";
-import Benevole from "./pages/Benevole";
 
 const router = createBrowserRouter([
   {
@@ -17,18 +16,9 @@ const router = createBrowserRouter([
     Component: Layout,
     errorElement: <NotFound />,
     children: [
-      {
-        index: true,
-        Component: Home,
-      },
-      {
-        path: "jadopte",
-        Component: Jadopte,
-      },
-      {
-        path: "benevole",
-        Component: Benevole,
-      },
+      { index: true, Component: Home },
+      { path: "jadopte", Component: Jadopte },
+      { path: "benevole", Component: Benevole },
     ],
   },
 ]);
@@ -41,5 +31,5 @@ createRoot(document.getElementById("root")!).render(
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  </StrictMode>,
+  </StrictMode>
 );
