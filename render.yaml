@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: adaopte
+    runtime: node
+    rootDir: .
+    buildCommand: npm install && vite build
+    startCommand: node server.js
+    envVars:
+      - key: DATABASE_URL
+        sync: false
