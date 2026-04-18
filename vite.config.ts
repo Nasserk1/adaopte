@@ -1,8 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  server: { watch: { usePolling: true } },
-});
+  base: command === "build" ? "/" : "/",
+  server: { 
+    watch: { usePolling: true },
+    proxy: {
+      "/api": "http://localhost:3000"
+    }
+  },
+}));
