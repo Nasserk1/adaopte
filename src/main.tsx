@@ -1,14 +1,9 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "@/Pages/Home";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import NotFound from "@/Pages/NotFound";
-import Layout from "@/components/Layout";
-import Jadopte from "@/Pages/Jadopte";
-import Benevole from "@/Pages/Benevole";
-import "@/index.css";
+import Home from "./Pages/Home";
+import NotFound from "./Pages/NotFound";
+import Layout from "./components/Layout";
+import Jadopte from "./Pages/Jadopte";
+import Benevole from "./Pages/Benevole";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
