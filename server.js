@@ -11,22 +11,37 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = await mysql.createConnection(process.env.DATABASE_URL);
+// Gestion de la connexion DB plus robuste
+let db;
+async function connectDB() {
+    try {
+        db = await mysql.createConnection(process.env.DATABASE_URL);
+        console.log("Connecté à la base de données MySQL");
+    } catch (err) {
+        console.error("Erreur de connexion DB:", err.message);
+    }
+}
+connectDB();
 
 app.post("/api/sql", async (req, res) => {
-  try {
-    const [rows] = await db.execute(req.body.query, req.body.params || []);
-    res.json({ success: true, data: rows });
-  } catch (error) {
-    res.json({ success: false, error: error.message });
-  }
+    if (!db) return res.status(500).json({ success: false, error: "DB non connectée" });
+    try {
+        const [rows] = await db.execute(req.body.query, req.body.params || []);
+        res.json({ success: true, data: rows });
+    } catch (error) {
+        res.json({ success: false, error: error.message });
+    }
 });
 
 // Servir le frontend buildé
+// IMPORTANT : Assure-toi que le dossier 'dist' existe sur Render après le build
 app.use(express.static(path.join(__dirname, "dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+
+app.get('(.*)', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));git 
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Serveur lancé sur le port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Serveur lancé sur le port ${PORT}`);
+});
