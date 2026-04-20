@@ -37,8 +37,8 @@ app.post("/api/sql", async (req, res) => {
 // IMPORTANT : Assure-toi que le dossier 'dist' existe sur Render après le build
 app.use(express.static(path.join(__dirname, "dist")));
 
-app.get('/:any*', (req, res) => {
-    res.sendFile(path.join(__dirname, "dist", "index.html"));
+app.get(/^(?!\/api).+/, (req, res) => {
+    res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
