@@ -1,8 +1,8 @@
-import Home from "./Pages/Home";
-import NotFound from "./Pages/NotFound";
+import Home from "./pages-temp/Home";
+import NotFound from "./pages-temp/NotFound";
 import Layout from "./components/Layout";
-import Jadopte from "./Pages/Jadopte";
-import Benevole from "./Pages/Benevole";
+import Jadopte from "./pages-temp/Jadopte";
+import Benevole from "./pages-temp/Benevole";
 import "./index.css";
 
 const router = createBrowserRouter([
