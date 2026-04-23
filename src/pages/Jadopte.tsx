@@ -31,7 +31,7 @@ export default function Jadopte() {
   const [animaux, setAnimaux] = useState<Animal[]>([]);
 
   useEffect(() => {
-    fetch("https://adadopte-api.onrender.com/animaux")
+    fetch("https://adaopte-api.onrender.com/animaux")
       .then(res => res.json())
       .then((data: Animal[]) => {
         console.log("Données reçues :", data);
