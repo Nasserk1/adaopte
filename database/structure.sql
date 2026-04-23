@@ -45,7 +45,7 @@ create table medicals_infos (
     id int primary key auto_increment,
     vaccinated boolean,
     sterilized boolean,
-    microshipped boolean,
+    microchipped boolean,
     last_checkup date,
     medical_notes mediumtext NULL,
     animal_id int NOT NULL,

@@ -9,23 +9,20 @@ interface Animal {
   description: string;
   imageurl: string;
   size: string;
-  good_with_kids: string;
-  good_with_animals: string;
+  good_with_kids: boolean;
+  good_with_animals: boolean;
   arrival_date: string;
-
   breed: string;
   type: string;
-
   shelter: string;
   address: string;
   city: string;
   zip_code: string;
   phone: string;
   email: string;
-
   vaccinated: boolean | null;
   sterilized: boolean | null;
-  microshipped: boolean | null;
+  microchipped: boolean | null;
   last_checkup: string | null;
   medical_notes: string | null;
 }
