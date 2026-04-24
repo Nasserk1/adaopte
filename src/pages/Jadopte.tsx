@@ -29,11 +29,12 @@ interface Animal {
 
 export default function Jadopte() {
   const [animaux, setAnimaux] = useState<Animal[]>([]);
-  const [chargement, setChargement] = useState(true);
+  const [chargement, setChargement] = useState(true); 
   const [erreur, setErreur] = useState<string | null>(null);
 
   useEffect(() => {
-    setChargement(true);
+    
+    //setChargement(true); 
     fetch("https://adaopte-api.onrender.com/animaux")
       .then((res) => {
         if (!res.ok) {
