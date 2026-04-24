@@ -6,7 +6,7 @@ interface Animal {
   age: number;
   gender: string;
   description: string;
-  imageurl: string;
+  imageurl: string; // Doit contenir "/images/nom-du-fichier.jpg" dans Supabase
   breed: string;
   type: string;
   shelter: string;
@@ -19,7 +19,6 @@ export default function Jadopte() {
   const [erreur, setErreur] = useState<string | null>(null);
 
   useEffect(() => {
-    // Appel à ton API sur Render
     fetch("https://adaopte-api.onrender.com/animaux")
       .then((res) => {
         if (!res.ok) throw new Error(`Erreur serveur (${res.status})`);
@@ -32,20 +31,17 @@ export default function Jadopte() {
         setChargement(false);
       })
       .catch((err) => {
-        console.error("Erreur :", err);
-        setErreur("Impossible de charger les données.");
+        console.error("Erreur de chargement :", err);
+        setErreur("Impossible de récupérer les animaux.");
         setChargement(false);
       });
   }, []);
 
   return (
-    <main style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto", fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "40px", fontSize: "2.5rem", color: "#1a1a1a" }}>
-        Animaux à adopter
-      </h1>
+    <main style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "40px" }}>Animaux à adopter</h1>
 
-      {chargement && <p style={{ textAlign: "center" }}>Chargement des compagnons...</p>}
-      
+      {chargement && <p style={{ textAlign: "center" }}>Chargement en cours...</p>}
       {erreur && <p style={{ color: "red", textAlign: "center" }}>{erreur}</p>}
 
       <div className="cards" style={{ 
@@ -57,53 +53,28 @@ export default function Jadopte() {
           <div key={animal.id} className="card" style={{ 
             borderRadius: "15px", 
             overflow: "hidden", 
-            boxShadow: "0 10px 20px rgba(0,0,0,0.08)",
-            backgroundColor: "#fff",
-            display: "flex",
-            flexDirection: "column"
+            boxShadow: "0 8px 15px rgba(0,0,0,0.1)",
+            backgroundColor: "#fff"
           }}>
-            {/* LOGIQUE D'IMAGE AMÉLIORÉE */}
+            {/* L'URL dans Supabase doit être exactement le chemin depuis le dossier public */}
+            {/* Exemple : /images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg */}
             <img
-              src={(() => {
-                const url = animal.imageurl;
-                if (url && url.includes("-unsplash")) {
-                  // On découpe par les tirets
-                  const parts = url.split('-');
-                  // On cherche l'ID juste avant le mot "unsplash"
-                  const unsplashIndex = parts.indexOf("unsplash");
-                  if (unsplashIndex > 0) {
-                    const unsplashId = parts[unsplashIndex - 1];
-                    // On ajoute un paramètre de version (v=...) pour forcer le rafraîchissement
-                    return `https://images.unsplash.com/photo-${unsplashId}?auto=format&fit=crop&q=80&w=500&v=${animal.id}`;
-                  }
-                }
-                // Si c'est une image perso dans le storage
-                return `https://uepaatwuzucozwahlfti.supabase.co/storage/v1/object/public/images/${url?.replace('/images/', '')}`;
-              })()}
+              src={animal.imageurl} 
               alt={animal.name}
               style={{ width: "100%", height: "250px", objectFit: "cover" }}
               onError={(e) => { 
-                // Image de secours (Chien mignon générique)
-                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=500"; 
+                // Si l'image n'est pas trouvée (faute de frappe dans Supabase par ex)
+                (e.target as HTMLImageElement).src = "https://via.placeholder.com/400x250?text=Image+non+trouvée"; 
               }}
             />
 
             <div style={{ padding: "20px" }}>
-              <h2 style={{ margin: "0 0 10px 0", color: "#2c3e50" }}>{animal.name}</h2>
-              <div style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
-                <p style={{ margin: "5px 0" }}><strong>Espèce :</strong> {animal.type}</p>
-                <p style={{ margin: "5px 0" }}><strong>Race :</strong> {animal.breed}</p>
-                <p style={{ margin: "5px 0" }}><strong>Âge :</strong> {animal.age} ans</p>
-                <p style={{ margin: "5px 0" }}><strong>Ville :</strong> {animal.city}</p>
-              </div>
-              <p style={{ 
-                marginTop: "15px", 
-                fontSize: "0.95rem", 
-                lineHeight: "1.5", 
-                color: "#34495e",
-                fontStyle: "italic" 
-              }}>
-                "{animal.description}"
+              <h2 style={{ margin: "0 0 10px 0" }}>{animal.name}</h2>
+              <p style={{ margin: "5px 0" }}><strong>Espèce :</strong> {animal.type}</p>
+              <p style={{ margin: "5px 0" }}><strong>Race :</strong> {animal.breed}</p>
+              <p style={{ margin: "5px 0" }}><strong>Ville :</strong> {animal.city}</p>
+              <p style={{ marginTop: "15px", fontSize: "0.9rem", color: "#555" }}>
+                {animal.description}
               </p>
             </div>
           </div>
