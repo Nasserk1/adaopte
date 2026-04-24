@@ -79,7 +79,8 @@ export default function Jadopte() {
                   if (animal.imageurl && animal.imageurl.includes("-unsplash")) {
                     const parts = animal.imageurl.split('-');
                     const unsplashId = parts[1]; 
-                    return `https://images.unsplash.com/photo-${unsplashId}?auto=format&fit=crop&q=80&w=500`;
+                    // Remplace la ligne du return Unsplash par celle-ci :
+                  return `https://images.unsplash.com/photo-${unsplashId}?auto=format&fit=crop&q=80&w=500&sig=${Math.random()}`;
                   } 
                   return `https://uepaatwuzucozwahlfti.supabase.co/storage/v1/object/public/images/${animal.imageurl?.replace('/images/', '')}`;
                 })()}
