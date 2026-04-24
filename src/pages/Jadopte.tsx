@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-// Définition du type Animal pour TypeScript
 interface Animal {
   id: number;
   name: string;
@@ -16,97 +15,99 @@ interface Animal {
 
 export default function Jadopte() {
   const [animaux, setAnimaux] = useState<Animal[]>([]);
-  // On laisse chargement à true par défaut
-  const [chargement, setChargement] = useState(true); 
+  const [chargement, setChargement] = useState(true);
   const [erreur, setErreur] = useState<string | null>(null);
 
   useEffect(() => {
-    // Note : On ne rappelle pas setChargement(true) ici pour éviter les rendus inutiles
+    // Appel à ton API sur Render
     fetch("https://adaopte-api.onrender.com/animaux")
       .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Erreur serveur (${res.status})`);
-        }
+        if (!res.ok) throw new Error(`Erreur serveur (${res.status})`);
         return res.json();
       })
       .then((data) => {
         if (Array.isArray(data)) {
           setAnimaux(data);
-        } else {
-          setAnimaux([]);
         }
         setChargement(false);
       })
       .catch((err) => {
-        console.error("Erreur API :", err);
-        setErreur("Impossible de charger les animaux. Vérifiez la connexion au serveur.");
+        console.error("Erreur :", err);
+        setErreur("Impossible de charger les données.");
         setChargement(false);
       });
   }, []);
 
   return (
-    <main style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Animaux à adopter</h1>
+    <main style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto", fontFamily: "Arial, sans-serif" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "40px", fontSize: "2.5rem", color: "#1a1a1a" }}>
+        Animaux à adopter
+      </h1>
 
-      {/* Affichage pendant le chargement */}
-      {chargement && <p style={{ textAlign: "center" }}>Chargement des animaux en cours...</p>}
+      {chargement && <p style={{ textAlign: "center" }}>Chargement des compagnons...</p>}
+      
+      {erreur && <p style={{ color: "red", textAlign: "center" }}>{erreur}</p>}
 
-      {/* Affichage en cas d'erreur API */}
-      {erreur && (
-        <div style={{ color: "red", padding: "15px", border: "1px solid red", borderRadius: "8px", marginBottom: "20px", textAlign: "center" }}>
-          {erreur}
-        </div>
-      )}
-
-      {/* Grille des animaux */}
       <div className="cards" style={{ 
         display: "grid", 
-        gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", 
-        gap: "25px" 
+        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+        gap: "30px" 
       }}>
-        {!chargement && animaux.length > 0 ? (
-          animaux.map((animal) => (
-            <div key={animal.id} className="card" style={{ 
-              border: "1px solid #eee", 
-              borderRadius: "12px", 
-              overflow: "hidden",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-              backgroundColor: "#fff"
-            }}>
-              {/* LOGIQUE D'AFFICHAGE DE L'IMAGE */}
-              <img
-                src={(() => {
-                  if (animal.imageurl && animal.imageurl.includes("-unsplash")) {
-                    const parts = animal.imageurl.split('-');
-                    const unsplashId = parts[1]; 
-                    // Remplace la ligne du return Unsplash par celle-ci :
-                  return `https://images.unsplash.com/photo-${unsplashId}?auto=format&fit=crop&q=80&w=500&sig=${Math.random()}`;
-                  } 
-                  return `https://uepaatwuzucozwahlfti.supabase.co/storage/v1/object/public/images/${animal.imageurl?.replace('/images/', '')}`;
-                })()}
-                alt={animal.name}
-                style={{ width: "100%", height: "250px", objectFit: "cover" }}
-                onError={(e) => { 
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=500"; 
-                }}
-              />
+        {animaux.map((animal) => (
+          <div key={animal.id} className="card" style={{ 
+            borderRadius: "15px", 
+            overflow: "hidden", 
+            boxShadow: "0 10px 20px rgba(0,0,0,0.08)",
+            backgroundColor: "#fff",
+            display: "flex",
+            flexDirection: "column"
+          }}>
+            {/* LOGIQUE D'IMAGE AMÉLIORÉE */}
+            <img
+              src={(() => {
+                const url = animal.imageurl;
+                if (url && url.includes("-unsplash")) {
+                  // On découpe par les tirets
+                  const parts = url.split('-');
+                  // On cherche l'ID juste avant le mot "unsplash"
+                  const unsplashIndex = parts.indexOf("unsplash");
+                  if (unsplashIndex > 0) {
+                    const unsplashId = parts[unsplashIndex - 1];
+                    // On ajoute un paramètre de version (v=...) pour forcer le rafraîchissement
+                    return `https://images.unsplash.com/photo-${unsplashId}?auto=format&fit=crop&q=80&w=500&v=${animal.id}`;
+                  }
+                }
+                // Si c'est une image perso dans le storage
+                return `https://uepaatwuzucozwahlfti.supabase.co/storage/v1/object/public/images/${url?.replace('/images/', '')}`;
+              })()}
+              alt={animal.name}
+              style={{ width: "100%", height: "250px", objectFit: "cover" }}
+              onError={(e) => { 
+                // Image de secours (Chien mignon générique)
+                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=500"; 
+              }}
+            />
 
-              <div style={{ padding: "20px" }}>
-                <h2 style={{ marginTop: "0", color: "#333" }}>{animal.name}</h2>
+            <div style={{ padding: "20px" }}>
+              <h2 style={{ margin: "0 0 10px 0", color: "#2c3e50" }}>{animal.name}</h2>
+              <div style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
                 <p style={{ margin: "5px 0" }}><strong>Espèce :</strong> {animal.type}</p>
                 <p style={{ margin: "5px 0" }}><strong>Race :</strong> {animal.breed}</p>
                 <p style={{ margin: "5px 0" }}><strong>Âge :</strong> {animal.age} ans</p>
                 <p style={{ margin: "5px 0" }}><strong>Ville :</strong> {animal.city}</p>
-                <p style={{ margin: "5px 0" }}><strong>Refuge :</strong> {animal.shelter}</p>
-                <p style={{ fontSize: "0.95rem", color: "#666", lineHeight: "1.4", marginTop: "15px" }}>
-                  {animal.description}
-                </p>
               </div>
+              <p style={{ 
+                marginTop: "15px", 
+                fontSize: "0.95rem", 
+                lineHeight: "1.5", 
+                color: "#34495e",
+                fontStyle: "italic" 
+              }}>
+                "{animal.description}"
+              </p>
             </div>
-          ))
-        ) : (
-          !chargement && !erreur && <p style={{ textAlign: "center", gridColumn: "1 / -1" }}>Aucun animal disponible pour le moment.</p>
-        )}
+          </div>
+        ))}
       </div>
     </main>
   );
