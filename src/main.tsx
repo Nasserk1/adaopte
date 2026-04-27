@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import Jadopte from "./pages/Jadopte";
-import Benevole from "./pages/Benevole";
+//import Benevole from "./pages/Benevole";
 import "./index.css";
 
 const router = createBrowserRouter([
