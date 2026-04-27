@@ -19,6 +19,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "jadopte", element: <Jadopte /> },
       { path: "benevole", element: <Benevole /> },
+      { path: "guide", element: <Home /> },
     ],
   },
 ]);
