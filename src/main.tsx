@@ -13,7 +13,7 @@ import "./index.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: Layout,
+    element: <Layout />,
     errorElement: <NotFound />,
     children: [
       { index: true, element: <Home /> },
