@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     Component: Layout,
     errorElement: <NotFound />,
     children: [
-      { path: "/", element: <Home /> },
+      { index: true, element: <Home /> },
       { path: "jadopte", element: <Jadopte /> },
       { path: "benevole", element: <Benevole /> },
     ],
