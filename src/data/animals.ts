@@ -1,13 +1,13 @@
 //export const animals = [];
-import alanKing from "../assets/images/alan-king-KZv7w34tluA-unsplash.jpg";
-import chanSwan from "../assets/images/chan-swan-NKyl19P5IHg-unsplash.jpg";
-import charlesDeluvio from "../assets/images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg";
-import jaePark from "../assets/images/jae-park-7GX5aICb5i4-unsplash.jpg";
+import alanKing from "/images/alan-king-KZv7w34tluA-unsplash.jpg";
+import chanSwan from "/images/chan-swan-NKyl19P5IHg-unsplash.jpg";
+import charlesDeluvio from "/images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg";
+import jaePark from "/images/jae-park-7GX5aICb5i4-unsplash.jpg";
 
-import manjaVitolic from "../assets/images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg";
-import melanieKreutz from "../assets/images/melanie-kreutz-IFnknR2Mv5o-unsplash.jpg";
-import periStojnic from "../assets/images/peri-stojnic-5Vr_RVPfbMI-unsplash.jpg";
-import yoseiOg from "../assets/images/yosei-g-OVgE3m4MHKM-unsplash.jpg";
+import manjaVitolic from "/images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg";
+import melanieKreutz from "/images/melanie-kreutz-IFnknR2Mv5o-unsplash.jpg";
+import periStojnic from "/images/peri-stojnic-5Vr_RVPfbMI-unsplash.jpg";
+import yoseiOg from "/images/yosei-g-OVgE3m4MHKM-unsplash.jpg";
 
 
 
