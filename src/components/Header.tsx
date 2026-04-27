@@ -7,7 +7,7 @@ export default function Header() {
     <header id="header-container">
       <div id="adaopte-logo">
         <nav>
-          <NavLink to={"/"} id="adaopte-style">🐾<span id="ada-style">Ada</span><span id="opte-style">opte</span>
+          <NavLink to={"/"} id="adaopte-style">🐾<span id="ada-style">nAda</span><span id="opte-style">opte</span>
           </NavLink>
         </nav>
       </div>
