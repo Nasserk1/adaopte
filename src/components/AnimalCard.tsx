@@ -1,28 +1,29 @@
-import "./AnimalCardCss.css";
+import "./AnimalsCards.css"; // Vérifiez bien que le nom correspond au fichier CSS créé
+
 interface AnimalCardProps {
-  type: string,
-  name: string,
-  breed: string,
-  age: string | number,
-  localisation: string,
-  description: string,
-  imageUrl: string,
+  type: string;
+  name: string;
+  breed: string;
+  age: string | number;
+  localisation: string;
+  description: string;
+  imageUrl: string; // Cette prop recevra le chemin "/images/nom-du-fichier.jpg"
 }
 
 export default function AnimalCard({
-  type, 
-  name, 
-  breed, 
-  age, 
-  localisation, 
-  description, 
+  type,
+  name,
+  breed,
+  age,
+  localisation,
+  description,
   imageUrl
 }: AnimalCardProps) {
   return (
     <div className="animal-card">
       <img
         src={imageUrl}
-        alt="Animal"
+        alt={`Photo de ${name}`}
         className="animal-image"
       />
 
@@ -31,15 +32,24 @@ export default function AnimalCard({
 
         <h2 className="animal-name">{name}</h2>
 
-        <p className="animal-details">
-          {breed} · {age} ans
-        </p>
-
-        <p className="animal-location">{localisation}</p>
+        <div className="animal-details-group">
+          <p className="animal-detail-item">
+            <span className="detail-label">Race :</span> {breed}
+          </p>
+          <p className="animal-detail-item">
+            <span className="detail-label">Âge :</span> {age} {typeof age === 'number' && age > 1 ? 'ans' : 'an'}
+          </p>
+          <p className="animal-detail-item">
+            <span className="detail-label">Ville :</span> {localisation}
+          </p>
+        </div>
 
         <p className="animal-description">{description}</p>
 
-        <button className="animal-button" onClick={() => alert(name +' ' + type)}>
+        <button 
+          className="animal-button" 
+          onClick={() => alert(`Merci de vouloir rencontrer ${name} !`)}
+        >
           Rencontrer
         </button>
       </div>

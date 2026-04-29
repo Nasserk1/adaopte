@@ -1,81 +1,47 @@
-import { useEffect, useState } from "react";
+import { animals } from "../data/animals"; 
+import "../components/AnimalCardCss.css"; 
 
 interface Animal {
-  id: number;
+  id: string;
   name: string;
-  age: number;
-  gender: string;
-  description: string;
-  imageurl: string; // Doit contenir "/images/nom-du-fichier.jpg" dans Supabase
-  breed: string;
   type: string;
-  shelter: string;
-  city: string;
+  breed: string;
+  image: string;
+  description: string;
 }
 
 export default function Jadopte() {
-  const [animaux, setAnimaux] = useState<Animal[]>([]);
-  const [chargement, setChargement] = useState(true);
-  const [erreur, setErreur] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch("https://adaopte-api.onrender.com/animaux")
-      .then((res) => {
-        if (!res.ok) throw new Error(`Erreur serveur (${res.status})`);
-        return res.json();
-      })
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setAnimaux(data);
-        }
-        setChargement(false);
-      })
-      .catch((err) => {
-        console.error("Erreur de chargement :", err);
-        setErreur("Impossible de récupérer les animaux.");
-        setChargement(false);
-      });
-  }, []);
-
   return (
     <main style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto" }}>
       <h1 style={{ textAlign: "center", marginBottom: "40px" }}>Animaux à adopter</h1>
 
-      {chargement && <p style={{ textAlign: "center" }}>Chargement en cours...</p>}
-      {erreur && <p style={{ color: "red", textAlign: "center" }}>{erreur}</p>}
+      <div className="container"> 
+        {animals.map((animal: Animal) => (
+          <div key={animal.id} className="animal-card">
+            <div className="image-container">
+              <img
+                src={animal.image} 
+                alt={animal.name}
+                className="animal-image"
+                onError={(e) => { 
+                  (e.target as HTMLImageElement).src = "/images/background.jpg"; 
+                }}
+              />
+            </div>
 
-      <div className="cards" style={{ 
-        display: "grid", 
-        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
-        gap: "30px" 
-      }}>
-        {animaux.map((animal) => (
-          <div key={animal.id} className="card" style={{ 
-            borderRadius: "15px", 
-            overflow: "hidden", 
-            boxShadow: "0 8px 15px rgba(0,0,0,0.1)",
-            backgroundColor: "#fff"
-          }}>
-            {/* L'URL dans Supabase doit être exactement le chemin depuis le dossier public */}
-            {/* Exemple : /images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg */}
-            <img
-              src={animal.imageurl} 
-              alt={animal.name}
-              style={{ width: "100%", height: "250px", objectFit: "cover" }}
-              onError={(e) => { 
-                // Si l'image n'est pas trouvée (faute de frappe dans Supabase par ex)
-                (e.target as HTMLImageElement).src = "https://via.placeholder.com/400x250?text=Image+non+trouvée"; 
-              }}
-            />
+            <div className="animal-content">
+              {/* CORRECTION : On affiche le nom seul ici, sans l'ID */}
+              <h2 className="animal-name">{animal.name}</h2>
+              
+              <div className="animal-info">
+                <p><strong>Espèce :</strong> {animal.type}</p>
+                <p><strong>Race :</strong> {animal.breed}</p>
+              </div>
 
-            <div style={{ padding: "20px" }}>
-              <h2 style={{ margin: "0 0 10px 0" }}>{animal.name}</h2>
-              <p style={{ margin: "5px 0" }}><strong>Espèce :</strong> {animal.type}</p>
-              <p style={{ margin: "5px 0" }}><strong>Race :</strong> {animal.breed}</p>
-              <p style={{ margin: "5px 0" }}><strong>Ville :</strong> {animal.city}</p>
-              <p style={{ marginTop: "15px", fontSize: "0.9rem", color: "#555" }}>
-                {animal.description}
-              </p>
+              {/* CORRECTION : On ajoute la description ici */}
+              <p className="animal-description">{animal.description}</p>
+              
+              <button className="animal-button">Rencontrer</button>
             </div>
           </div>
         ))}

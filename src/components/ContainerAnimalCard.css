@@ -1,12 +1,11 @@
+
+
 .container {
-    background-color: #f9f9f9;
-    width: 100%;
-    border: 5cap;
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(4, 1fr);
-    row-gap: 20px;
-    gap: 15px;
-    padding: 80px 40px 80px 40px;
-    box-sizing: border-box;
+  display: grid;
+  /* Crée des colonnes d'au moins 300px qui se répartissent l'espace */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  justify-items: center; /* Centre les cartes dans leur colonne */
+  background-color: #f9f9f9;
 }
